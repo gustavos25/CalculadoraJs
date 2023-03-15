@@ -1,0 +1,71 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+container {
+  height: 100vh;
+  background-color: #cac8c8;
+  display: grid;
+  place-items: center;
+}
+
+.box {
+  width: fit-content;
+  background-color: #411c52;
+  border-radius: 16px;
+  box-shadow: 5px 5px 6px 0px #00000040;
+  padding: 36px;
+}
+
+.box .visor {
+  height: 88px;
+  width: 100%;
+  border-radius: 16px;
+  background-color: lightgray;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.box .body-box {
+  display: grid;
+  grid-gap: 32px;
+  grid-template-columns: repeat(4, 72px);
+}
+
+.box .button-box {
+  background-color: lightgray;
+  border-radius: 16px;
+  height: 72px;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: rgb(193, 193, 193, 0.3) 1px 1px 4px 1px;
+  font-size: 32px;
+  font-weight: bolder;
+}
+
+.box .button-box:nth-child(19) {
+  width: 176px;
+}
+
+.box .button-box:nth-child(4n),
+.box .button-box:nth-child(-n + 3),
+.box .button-box:nth-child(18),
+.box .button-box:nth-child(19) {
+  color: #1d94ae;
+}
+
+.box .button-box:hover {
+  background-color: rgb(173, 172, 172);
+  box-shadow: rgb(193, 193, 193, 0.3) 1px 1px 5px 2px;
+  transition: all 0.5s;
+}
+
+.visor p {
+  font-size: 32px;
+  padding: 0px 30px 0px 0px;
+}
