@@ -12,53 +12,61 @@ visor.appendChild(visorP);
 
 function captureClick(value) {
   value.addEventListener("click", function () {
-    if (value.innerText >= 0 || value.innerText <= 9) {
-      console.log(value.innerText);
-    }
-    operationAction(value.innerText);
+    showVisor(value.innerText);
   });
 }
 
-function result(value) {
-  var word = value.split("");
-  for (var i = 0; i < word.length; i++) {
-    return word[i];
+function showVisor(botao) {
+  if (botao >= 0 || botao <= 9) {
+    visorP.textContent += botao;
+  } else if (botao === "AC") {
+    visorP.textContent = "";
+  } else if (botao === "=") {
+    result();
+  } else {
+    visorP.textContent += ` ${botao} `;
   }
 }
 
-function operationAction(operator) {
+function result() {
+  var word = visorP.textContent.split(" ");
+  for (var i = 0; i < word.length; i++) {
+    visorP.textContent = operationAction(
+      Number(word[0]),
+      word[1],
+      Number(word[2])
+    );
+  }
+}
+
+function operationAction(number1, operator, number2) {
+  var results;
   switch (operator) {
-    case "AC":
-      visorP.textContent = 0;
-      break;
     case "*":
-      visorP.textContent += "*";
+      return (results = number1 * number2);
       break;
     case "/":
-      visorP.textContent += "/";
+      return (results = number1 / number2);
       break;
     case "X²":
-      visorP.textContent += "^";
+      console.log(Math.pow(number1, number2));
+      return (results = Math.pow(number1, number2));
       break;
     case "√":
-      visorP.textContent += "√";
+      return (results = Math.sqrt(number1, number2));
       break;
     case "-":
-      visorP.textContent += "-";
+      return (results = number1 - number2);
       break;
     case "+":
-      visorP.textContent += "+";
+      return (results = number1 + number2);
       break;
     case "=":
-      var results = result(visorP.textContent);
-      console.log(results);
-      //if (value.innerText >= 0 || value.innerText <= 9) {
-      //}
-      visorP.textContent = results;
+      results;
       break;
 
     default:
-      visorP.textContent += operator;
+      return results;
       break;
   }
 }
